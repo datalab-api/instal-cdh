@@ -1,7 +1,10 @@
 ---
-- name: Install Cloudera Manager
-  hosts: cloudera_masters
+- name: Create Portainer Module 
+  hosts: masters
+  remote_user: root
   become: true
-
+  environment:
+    LANGUAGE: en_US.UTF-8
+    LC_ALL: fr_FR.utf-8
   roles:
-    - cloudera_manager_install
+    -  { role: cloudera_manager_install }

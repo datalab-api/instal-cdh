@@ -1,0 +1,67 @@
+---
+  - name: Install required packages
+    yum:
+      name:
+        - wget
+        - createrepo
+        - yum-utils
+      state: present
+  
+  - name: Install Java Development Kit (JDK)
+    yum:
+      name: java-1.8.0-openjdk-devel
+      state: present
+
+  - name: Ensure the directory exists
+    file:
+      path: /var/www/html
+      state: directory
+      owner: root  # Specify the desired owner (optional)
+      group: root  # Specify the desired group (optional)
+      mode: '0755'  # Specify the permissions (optional)
+
+  - name: Restart HTTPD service
+    systemd:
+      name: httpd
+      state: restarted
+      enabled: yes
+
+  - name: Download Cloudera Manager GPG Key
+    get_url:
+      url: "https://archive.cloudera.com/cm7/{{ cloudera_linux_distribution_major_version }}/redhat7/yum/cloudera-manager-trial.repo"
+      dest: "/etc/yum.repos.d/"
+    when: cloudera_linux_distribution == 'redhat7'
+
+  - name: Add Cloudera Manager Repository
+    copy:
+      src: cloudera-manager-trial.repo
+      dest: /etc/yum.repos.d/cloudera-manager.repo
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: Synchronize Cloudera Manager Repository
+    command: "reposync -r cloudera-manager"
+    args:
+      chdir: /var/www/html
+    when: cloudera_linux_distribution == 'redhat7'
+
+  - name: Create Cloudera Manager Repo
+    command: "createrepo ."
+    args:
+      chdir: /var/www/html/cm7/{{ cloudera_linux_distribution_major_version }}/redhat7/yum/"
+    when: cloudera_linux_distribution == 'redhat7'
+
+  - name: Move Cloudera Manager RPMs
+    command: "mv /var/www/html/cloudera-manager/RPMS /var/www/html/cm7/{{ cloudera_linux_distribution_major_version }}/redhat7/yum/"
+    when: cloudera_linux_distribution == 'redhat7'
+
+  - name: Download Cloudera Manager GPG Key
+    get_url:
+      url: "https://archive.cloudera.com/cm7/{{ cloudera_linux_distribution_major_version }}/redhat7/yum/RPM-GPG-KEY-cloudera"
+      dest: /var/www/html/cm7/{{ cloudera_linux_distribution_major_version }}/redhat7/yum/RPM-GPG-KEY-cloudera"
+    when: cloudera_linux_distribution == 'redhat7
+
+
+
+    # https://archive.cloudera.com/cm7/7.4.4/redhat7/yum/cloudera-manager-trial.repo

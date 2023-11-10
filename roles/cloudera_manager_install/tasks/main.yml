@@ -1,36 +1,18 @@
 ---
-# tasks file for roles/cloudera_manager_install
+  - name: include task config 
+    include: config.yml
+  - name: Install Cloudera Manager Packages
+    yum:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - cloudera-manager-agent
+      - cloudera-manager-daemons
+      - cloudera-manager-server
 
-- name: Install Cloudera Manager
-  hosts: all
-  become: true
-
-  tasks:
-    - name: Add Cloudera Manager Repository
-      yum_repository:
-        name: cloudera-manager
-        description: Cloudera Manager, Version 7.x
-        baseurl: https://archive.cloudera.com/cm7/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/x86_64/cm/7/
-        gpgkey: https://archive.cloudera.com/cm7/{{ ansible_distribution | lower }}/{{ ansible_distribution_major_version }}/x86_64/cm/RPM-GPG-KEY-cloudera
-        gpgcheck: yes
-        enabled: yes
-
-    - name: Install Java Development Kit (JDK)
-      yum:
-        name: java-1.8.0-openjdk-devel
-        state: present
-
-    - name: Install Cloudera Manager Packages
-      yum:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - cloudera-manager-agent
-        - cloudera-manager-daemons
-        - cloudera-manager-server
-
-    - name: Start Cloudera Manager Server
-      service:
-        name: cloudera-scm-server
-        state: started
-        enabled: yes
+  - name: Start Cloudera Manager Server
+    service:
+      name: cloudera-scm-server
+      state: started
+      enabled: yes
+    when: cloudera_manager_node == 'master1'

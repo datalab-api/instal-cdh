@@ -1,2 +1,4 @@
 ---
 # vars file for roles/cloudera_manager_install
+cloudera_linux_distribution_major_version: 7.4.4
+cloudera_linux_distribution: redhat7
