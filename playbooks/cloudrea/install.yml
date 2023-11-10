@@ -1,0 +1,7 @@
+---
+- name: Install Cloudera Manager
+  hosts: cloudera_nodes
+  become: true
+
+  roles:
+    - cloudera_manager_install
