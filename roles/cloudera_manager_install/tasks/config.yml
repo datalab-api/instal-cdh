@@ -1,4 +1,15 @@
 ---
+  - name: Install dependencies
+    package:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - openjdk-8-jdk
+      - python
+
+  - name: Install Python 3 (if not already installed)
+    raw: test -e /usr/bin/python3 || (apt -y update && apt -y install python3)
+
   - name: Install required packages
     yum:
       name:
@@ -6,10 +17,7 @@
         - yum-utils
       state: present
   
-  - name: Install Java Development Kit (JDK)
-    yum:
-      name: java-1.8.0-openjdk-devel
-      state: present
+
 
   - name: Ensure the directory exists
     file:
