@@ -1,6 +1,6 @@
 ---
 - name: Install Cloudera Manager
-  hosts: cloudera_nodes
+  hosts: cloudera_masters
   become: true
 
   roles:

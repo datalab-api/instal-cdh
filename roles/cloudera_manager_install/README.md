@@ -27,6 +27,12 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - { role: username.rolename, x: 42 }
 
+Build  Playbook
+----------------
+```bash
+ansible-playbook --connection = local -i invenoty.ini, playbooks/cloudera/install.yml
+```
+
 License
 -------
 
