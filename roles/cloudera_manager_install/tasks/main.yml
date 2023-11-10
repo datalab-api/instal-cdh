@@ -1,6 +1,7 @@
 ---
   - name: include task config 
     include: config.yml
+    
   - name: Install Cloudera Manager Packages
     yum:
       name: "{{ item }}"
