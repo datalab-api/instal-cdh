@@ -1,98 +1,44 @@
-<div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Instal Cdh" />
+Role Name
+=========
 
-  &#xa0;
+A brief description of the role goes here.
 
-  <!-- <a href="https://instalcdh.netlify.app">Demo</a> -->
-</div>
+Requirements
+------------
 
-<h1 align="center">Instal Cdh</h1>
+Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8">
+Role Variables
+--------------
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8">
+A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8">
+Dependencies
+------------
 
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8">
+A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8" /> -->
+Example Playbook
+----------------
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8" /> -->
+Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/instal-cdh?color=56BEB8" /> -->
-</p>
+    - hosts: servers
+      roles:
+         - { role: username.rolename, x: 42 }
 
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Instal Cdh 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
-<p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
-</p>
-
-<br>
-
-## :dart: About ##
-
-Describe your project
-
-## :sparkles: Features ##
-
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
-
-## :rocket: Technologies ##
-
-The following tools were used in this project:
-
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-## :white_check_mark: Requirements ##
-
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
-
-## :checkered_flag: Starting ##
-
+Build  Playbook
+----------------
 ```bash
-# Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/instal-cdh
-
-# Access
-$ cd instal-cdh
-
-# Install dependencies
-$ yarn
-
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
+ansible-playbook --connection = local -i invenoty.ini, playbooks/cloudera/install.yml
 ```
 
-## :memo: License ##
+License
+-------
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+BSD
 
+Author Information
+------------------
 
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
-
-&#xa0;
-
-<a href="#top">Back to top</a>
+An optional section for the role authors to include contact information, or a website (HTML is not allowed).
